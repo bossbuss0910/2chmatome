@@ -36,7 +36,15 @@ router.get('/out',function(req, res, next){
 	matomeDB.findOne({url:Url},function(err,memo){
 		console.log(memo.res.length)
 		res.render('outputmatome',{title:memo.title,output:memo.res});
+		matomeDB.remove({ url: Url }, function(err, result){
+			    if (err) {
+				    res.send({'error': 'An error has occurred - ' + err});
+				    } else {
+					    console.log('Success: ' + result + ' document(s) deleted');
+					    }
+					    });
 	});
+
 });
 
 
