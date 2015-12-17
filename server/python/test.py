@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from pymongo import Connection
-
+import re
 con = Connection('mongodb://localhost/matome')
 
 #dbの選択
@@ -18,6 +18,8 @@ for data in col.find():
 	#タイトル
 	title = data['title']
 	data_dic['title']=title
+	#レスの対象となったレスの番号リスト(>>0みたいな)
+	tar_list=[]
 	for res_data in tar_list:
 		res=res_data.split(u"：")
 		#レスの番号
@@ -32,12 +34,19 @@ for data in col.find():
 		#レスの内容
 		com = (" ").join((res.split(" "))[1:])
 		print com
-		data_dic['res'][number]=[id,com]
 		if number==1:
+			data_dic['res'][number]=[id,com]
 			nushi = id 
 			nushi_res = com
+		else:
+			match = re.findall(r'[0-9]+',com)
+			if len(match)>0:
+				if com.find('>>'):
+					data_dic['res'][number]=[id,com]
+			elif id==nushi:
+				data_dic['res'][number]=[id,com]
 	print nushi
 	print nushi_res
-	col.remove({'url':data['url']})
+#	col.remove({'url':data['url']})
 	print data_dic
 	out.insert(data_dic)
