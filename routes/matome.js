@@ -44,7 +44,6 @@ router.get('/out',function(req, res, next){
 					    }
 					    });
 	});
-
 });
 
 

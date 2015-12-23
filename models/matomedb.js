@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/matome');
 
 var matomeSchema = mongoose.Schema({
