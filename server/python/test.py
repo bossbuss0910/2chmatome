@@ -55,9 +55,8 @@ def change(data_dic,out_dic):
 	return out_list
 
 
-def DBconnect(col):
+def DBconnect(col,out):
 	for data in col.find():
-		print data
 		nushi = ""
 		nushi_res = ""
 		data_dic={'url':data['url']}
@@ -72,6 +71,7 @@ def DBconnect(col):
 			#レスの番号
 			if res[0]=="":
 				break
+			print res[0]
 			number = int(res[0])
 			res = (res[2].split(u"ID:"))[1]
 			#id
@@ -89,17 +89,16 @@ def DBconnect(col):
 		res_out=change(f_dic,o_dic)
 		data_dic['res']=res_out
 		print data_dic
-		col.insert(data_dic)
+		out.insert(data_dic)
 
 if __name__ == '__main__':
 	con = Conneccon = Connection('mongodb://localhost/matome')
 	
 	#dbの選択
-	db = con['matome']
-	
+	db = con['matome']	
 	#collectionの選択
 	col = db.matomedbs
-	out = db.out
+	outs = db.outs
 	while 1:
-		DBconnect(col)
+		DBconnect(col,outs)
 

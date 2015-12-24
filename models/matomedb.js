@@ -6,6 +6,9 @@ var matomeSchema = mongoose.Schema({
 	  title: { type: String },
 	  res :  { type: [String]}
 });
+
 var matomeDB = mongoose.model('matomeDB', matomeSchema);
+var outDB = mongoose.model('out',matomeSchema);
 
 exports.matomeDB = matomeDB;
+exports.outDB = outDB;

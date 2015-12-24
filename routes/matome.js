@@ -10,6 +10,7 @@ router.use(bodyParser());
 //データベース用意
 var model = require('../models/matomeDB.js');
 var matomeDB  = model.matomeDB;
+var outDB = model.outDB;
 var Url=null;
 var title = null
 
@@ -33,10 +34,10 @@ router.post('/input', function(req, respon, next) {
 
 
 router.get('/out',function(req, res, next){
-	matomeDB.findOne({url:Url},function(err,memo){
+	outDB.findOne({url:Url},function(err,memo){
 		console.log(memo.res.length)
 		res.render('outputmatome',{title:memo.title,output:memo.res});
-		matomeDB.remove({ url: Url }, function(err, result){
+		outDB.remove({ url: Url }, function(err, result){
 			    if (err) {
 				    res.send({'error': 'An error has occurred - ' + err});
 				    } else {
