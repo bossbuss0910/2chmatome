@@ -1,6 +1,5 @@
 mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/matome');
-
+mongoose.connect(process.env.MONGOLAB_URI||'mongodb://localhost/matome');
 var matomeSchema = mongoose.Schema({
 	  url:   { type: String },
 	  title: { type: String },
