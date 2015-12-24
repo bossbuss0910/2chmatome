@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 router.use(bodyParser());     
 
 //データベース用意
-var model = require('../models/matomeDB.js');
+var model = require('../models/matomedb.js');
 var matomeDB  = model.matomeDB;
 var outDB = model.outDB;
 var Url=null;
