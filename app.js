@@ -8,6 +8,11 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var matome = require('./routes/matome');
 var app = express();
+var exec = require('child_process').exec;
+
+exec('python server/python/test.py', function(err, stdout, stderr){
+	  /* some process */
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

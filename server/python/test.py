@@ -93,7 +93,7 @@ def DBconnect(col,out):
 
 if __name__ == '__main__':
 	con = Conneccon = Connection('mongodb://localhost/matome')
-	
+	print "a"	
 	#dbの選択
 	db = con['matome']	
 	#collectionの選択
