@@ -10,9 +10,9 @@ var matome = require('./routes/matome');
 var app = express();
 var exec = require('child_process').exec;
 
-exec('python server/python/test.py', function(err, stdout, stderr){
-	  /* some process */
-});
+
+//serverのpythonの実装（コマンドラインで非同期的に実装)
+exec('python server/python/test.py');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
