@@ -35,15 +35,14 @@ router.post('/input', function(req, respon, next) {
 
 router.get('/out',function(req, res, next){
 	outDB.findOne({url:Url},function(err,memo){
-//		console.log(memo.res.length)
-		res.render('outputmatome',{title:memo.title,output:memo.res});
-		outDB.remove({ url: Url }, function(err, result){
-			    if (err) {
-				    res.send({'error': 'An error has occurred - ' + err});
-				    } else {
-					    console.log('Success: ' + result + ' document(s) deleted');
-					    }
-					    });
+	res.render('outputmatome',{title:memo.title,output:memo.res});
+	outDB.remove({ url: Url }, function(err, result){
+		if (err) {
+			res.send({'error': 'An error has occurred - ' + err});
+			} else {
+				console.log('Success: ' + result + ' document(s) deleted');
+				}
+				});
 	});
 });
 

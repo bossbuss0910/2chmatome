@@ -12,7 +12,11 @@ var exec = require('child_process').exec;
 
 
 //serverのpythonの実装（コマンドラインで非同期的に実装)
-exec('python server/python/test.py');
+exec('python server/python/test.py',function(err, stdout, stderr){
+	if(err){
+		console.log(err);
+		}
+	});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
