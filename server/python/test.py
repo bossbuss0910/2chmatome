@@ -42,14 +42,13 @@ def change(data_dic,out_dic):
 	out_list=[]
 	#発火を反映
 	for num in sorted(data_dic.keys()):
-		s = str(num)+":ID"+data_dic[num][0]+"<br><font size=\"5\" color=\"#ff0000\">"+data_dic[num][1]+"</font>"
-#		print s
+		s = "<font size=\"2\">"+str(num)+":ID"+data_dic[num][0]+"</font><br><font size=\"5\" color=\"#ff0000\">"+data_dic[num][1]+"</font>"
 		out_list.append(s)
 		#ターゲットの後にそのあとの返事を反映
 		if num in out_dic.keys():
 			for res in sorted(out_dic[num].keys()):
 				if res not in data_dic.keys():
-					s = str(res)+":ID"+out_dic[num][res][0]+"<br>"+out_dic[num][res][1]
+					s = "<div style=\"margin-left:20px\">"+str(res)+":ID"+out_dic[num][res][0]+"<br>"+out_dic[num][res][1]+"</div>"
 #					print s
 					out_list.append(s)
 	return out_list
@@ -93,7 +92,6 @@ def DBconnect(col,out):
 
 if __name__ == '__main__':
 	con = Conneccon = Connection('mongodb://localhost/matome')
-	#print "a"	
 	#dbの選択
 	db = con['matome']	
 	#collectionの選択
